@@ -1,13 +1,22 @@
 import React from 'react';
 import './../css/App.css';
+import Guardian from './../routes/Guardian'
+import Ward from './../routes/Ward'
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        Are You There
+    <>
+      <header>
+        header
       </header>
-    </div>
+      <main>
+        <Guardian/>
+        <Ward/>
+      </main>
+      <footer>
+        footer
+      </footer>
+    </>
   );
 }
 
