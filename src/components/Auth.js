@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import AuthContext from './../context/auth-context.js'
 
 const Auth = () => {
+  const auth = useContext(AuthContext)
   const[email,setEmail] = useState('');
   const[password,setPassword]= useState('');
-  const[status,setStatus]= useState('');
   
   const signin = async() => {
     setEmail('')
     setPassword('')
-    setStatus('is signed in')
   }
 
   return(
@@ -20,7 +20,7 @@ const Auth = () => {
       <input type="password" placeholder="Enter Password" name="psw" val={password} onChange={(event)=>setPassword(event.target.value)} required/>
 
       <button onClick={()=>signin()} >signin</button>
-      {status}
+      {auth}
   </form>
   )
 };
