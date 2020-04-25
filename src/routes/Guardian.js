@@ -3,6 +3,8 @@ import Auth from "./../components/Auth";
 import MyWards from "./../components/MyWards";
 import BondsTable from "./../components/BondsTable";
 import AuthContext from "./../context/auth-context.js";
+import { Button } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 
 import { Route, Redirect } from "react-router-dom";
 
@@ -18,7 +20,18 @@ const Guardian = ({ match }) => {
           <Route path={`${match.path}/bondstable`} component={BondsTable} />
         </>
       )}
-      {auth.token && <button onClick={() => auth.logout()}>signout</button>}
+      {auth.token && (
+        <Button
+          type="primary"
+          icon={<HomeOutlined />}
+          size="large"
+          className="signout"
+          onClick={() => auth.logout()}
+          danger
+        >
+          signout
+        </Button>
+      )}
     </div>
   );
 };
