@@ -1,12 +1,13 @@
-import React from 'react';
-import BondsTable from './../components/BondsTable';
+import React from "react";
+import BondsTable from "./../components/BondsTable";
 
-const Ward = ({match}) => {
+const Ward = ({ match }) => {
   const name = match.params.name;
-  return(
+  return (
     <>
-    <h1>The bonds for {name} ⏰</h1>
-    <BondsTable/>
+      <h1>The bonds for {name} ⏰</h1>
+      <BondsTable />
     </>
-)}
+  );
+};
 export default Ward;

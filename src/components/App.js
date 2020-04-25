@@ -1,47 +1,43 @@
-import React, {useState} from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import './../css/App.css';
-import Guardian from './../routes/Guardian'
-import Ward from './../routes/Ward'
+import "./../css/App.css";
+import Guardian from "./../routes/Guardian";
+import Ward from "./../routes/Ward";
 // https://medium.com/@danfyfe/using-react-context-with-functional-components-153cbd9ba214
-import {AuthContextProvider} from './../context/auth-context.js'
+import { AuthContextProvider } from "./../context/auth-context.js";
 
 const App = () => {
-  const[token,setToken] = useState(null);
-  const[email,setEmail] = useState(null);
+  const [token, setToken] = useState(null);
+  const [email, setEmail] = useState(null);
 
-  const login = (token,userid) => {
-    setToken(token)
-    setEmail(userid)
-  }
+  const login = (token, userid) => {
+    setToken(token);
+    setEmail(userid);
+  };
   const logout = () => {
-    setToken(null)
-    setEmail(null)
-  }
+    setToken(null);
+    setEmail(null);
+  };
 
   const context = {
     token: token,
     email: email,
     login: login,
     logout: logout,
-  }
+  };
   return (
     <Router>
-      <header>
-        header
-      </header>
+      <header>header</header>
       <main>
         <AuthContextProvider value={context}>
-          <Route exact path="/guardian" component={Guardian}/>
+          <Route exact path="/guardian" component={Guardian} />
         </AuthContextProvider>
-        <Route path="/ward/:name" component={Ward}/>
+        <Route path="/ward/:name" component={Ward} />
       </main>
-      <footer>
-        footer
-      </footer>
+      <footer>footer</footer>
     </Router>
   );
-}
+};
 
 export default App;
