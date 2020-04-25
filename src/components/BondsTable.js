@@ -8,11 +8,6 @@ const columns = [
     key: "email",
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-  },
-  {
     title: "Created at",
     dataIndex: "created_at",
     key: "created_at",
