@@ -1,25 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Row, Modal } from "antd";
+import { Card, Col, Row, Modal, Form, Input } from "antd";
 import data from "./../context/dummyData";
 
 const MyWards = () => {
   const [wardsList, setWardsList] = useState([]);
   const [visible, setVisible] = useState(false);
-  const handleOk = (e) => {
-    // Post data
-    setVisible(false);
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const addWard = () => {
+    // const result = await fetch("Add wards", POST);
+    // const listOfWard = await result.json();
+    // setWardsList(listOfWard);
+    var today = new Date();
+    var date = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
 
+    const dummyData = {
+      key: "4",
+      name: name,
+      email: email,
+      created_at: date,
+      status: ["pending"],
+    };
+    data.push(dummyData);
+    setVisible(false);
+    setWardsList(data);
+  };
   // useEffect is a hook for encapsulating code that has 'side effects,' and is
   // like a combination of componentDidMount , componentDidUpdate
   useEffect(() => {
-    const fetchData = async () => {
-      // const result = await fetch("");
-      // const body = await result.json();
-      setWardsList(data);
-    };
-    fetchData();
-  });
+    // const fetchData = async () => {
+    //   // const result = await fetch("");
+    //   // const body = await result.json();
+    //   setWardsList(data);
+    // };
+    setWardsList(data);
+  }, [wardsList]);
+
   return (
     <>
       <div>
@@ -34,16 +50,33 @@ const MyWards = () => {
         <Modal
           title="Basic Modal"
           visible={visible}
-          onOk={handleOk}
+          onOk={addWard}
           onCancel={() => {
             setVisible(false);
           }}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <Form>
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
+            >
+              <Input onChange={(e) => setName(e.target.value)} />
+            </Form.Item>
+
+            <Form.Item
+              name={["user", "email"]}
+              label="Email"
+              rules={[{ required: true, type: "email" }]}
+            >
+              <Input onChange={(e) => setEmail(e.target.value)} />
+            </Form.Item>
+          </Form>
         </Modal>
       </div>
+
       <div style={{ background: "#ECECEC", padding: "30px" }}>
         <Row gutter={16}>
           {wardsList.map((ward) => {

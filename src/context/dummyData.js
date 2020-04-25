@@ -1,4 +1,4 @@
-const data = [
+let data = [
   {
     key: "1",
     email: "test@example.com",
