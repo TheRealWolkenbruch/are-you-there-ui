@@ -42,3 +42,38 @@ li.ant-menu-item.ant-menu-item-only-child {
 aside {
   background: var(--primary-color);
 }
+
+.content_wrapper {
+  background-color: white;
+  padding: 24;
+  height: 85vh;
+  padding: 100px;
+  margin: 40px 30px 40px 30px;
+  overflow: initial;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 11px;
+}
+
+.logo {
+  font-size: 16px;
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+.logo_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  background-color: #ffd8be;
+  padding: 1em;
+  width: 100%;
+  max-height: 62px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
