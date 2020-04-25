@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "./../context/auth-context.js";
+import { Form, Input, Button, Checkbox } from "antd";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
@@ -8,37 +9,33 @@ const Auth = () => {
 
   const signin = async () => {
     // POST API/SIGNUP
-    const token = "testoken";
-    auth.login(token, email);
+    auth.login(email, password);
   };
 
   return (
-    <form>
-      <label htmlFor="email">
-        <b>Email</b>
-      </label>
-      <input
-        type="email"
-        placeholder="Enter email"
-        name="email"
-        val={email}
-        onChange={(event) => setEmail(event.target.value)}
-        required
-      />
-      <label htmlFor="psw">
-        <b>Password</b>
-      </label>
-      <input
-        type="password"
-        placeholder="Enter Password"
-        name="psw"
-        val={password}
-        onChange={(event) => setPassword(event.target.value)}
-        required
-      />
-      <button onClick={() => signin()}>signin</button>
-      {auth.token} {auth.email} login.
-    </form>
+    <Form name="basic" initialValues={{ remember: true }} onFinish={signin}>
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
+        <Input onChange={(event) => setEmail(event.target.value)} />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: "Please input your password!" }]}
+      >
+        <Input.Password onChange={(event) => setPassword(event.target.value)} />
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Log in
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

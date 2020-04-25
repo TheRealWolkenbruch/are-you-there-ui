@@ -52,6 +52,9 @@ aside {
   overflow: initial;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -76,4 +79,19 @@ aside {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.content_wrapper > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.content_wrapper #basic {
+  width: 100%;
+  max-width: 600px;
+}
+
+.login-form-button {
+  width: 100%;
 }

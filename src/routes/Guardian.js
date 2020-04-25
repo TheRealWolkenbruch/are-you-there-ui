@@ -9,8 +9,7 @@ import { Route, Redirect } from "react-router-dom";
 const Guardian = ({ match }) => {
   const auth = useContext(AuthContext);
   return (
-    <h1>
-      Guardian Route
+    <div>
       {!auth.token && <Auth />}
       {auth.token && (
         <>
@@ -20,7 +19,7 @@ const Guardian = ({ match }) => {
         </>
       )}
       {auth.token && <button onClick={() => auth.logout()}>signout</button>}
-    </h1>
+    </div>
   );
 };
 export default Guardian;
