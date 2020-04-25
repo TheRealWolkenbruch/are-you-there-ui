@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
 import "./../css/App.css";
 import Guardian from "./../routes/Guardian";
@@ -63,10 +67,13 @@ const App = () => {
               }}
             >
               <div className="content_wrapper">
-                <AuthContextProvider value={context}>
-                  <Route path="/guardian" component={Guardian} />
-                </AuthContextProvider>
-                <Route path="/ward/:name" component={Ward} />
+                <Switch>
+                  <Redirect exact from="/" to="/guardian" />
+                  <Route exact path="/ward/:name" component={Ward} />
+                  <AuthContextProvider value={context}>
+                    <Route path="/guardian" component={Guardian} />
+                  </AuthContextProvider>
+                </Switch>
               </div>
             </Content>
           </Layout>
