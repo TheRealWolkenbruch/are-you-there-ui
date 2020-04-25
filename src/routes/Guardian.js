@@ -14,12 +14,10 @@ const Guardian = ({ match }) => {
       {!auth.token && <Auth />}
       {auth.token && (
         <>
-          <Redirect from={`${match.path}`} to={`${match.path}/mywards`} />
+          <Redirect exact from={`${match.path}`} to={`${match.path}/mywards`} />
           <Route path={`${match.path}/mywards`} component={MyWards} />
+          <Route path={`${match.path}/bondstable`} component={BondsTable} />
         </>
-      )}
-      {auth.token && (
-        <Route path={`${match.path}/bondstable`} component={BondsTable} />
       )}
       {auth.token && <button onClick={() => auth.logout()}>signout</button>}
     </h1>

@@ -1,13 +1,44 @@
+:root {
+  --primary-color: #002639;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+li.ant-menu-item-selected > a,
+.ant-menu-item-selected > a:hover {
+  background: #ffd8be;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
+  li.ant-menu-item-selected {
+  transition: all 0.1s;
+  font-weight: bold;
+  background: #ffd8be;
+  color: var(--primary-color);
+}
+
+.ant-menu-dark li.ant-menu-item-selected > a,
+.ant-menu-dark .ant-menu-item-selected > a:hover {
+  font-weight: bold;
+  transition: all 0.1s;
+  color: var(--primary-color);
+}
+
+li.ant-menu-item.ant-menu-item-only-child {
+  font-weight: bold;
+}
+aside {
+  background: var(--primary-color);
 }
