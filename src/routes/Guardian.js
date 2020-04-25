@@ -1,16 +1,28 @@
-import React, {useContext} from 'react';
-import Auth from './../components/Auth';
-import MyWards from './../components/MyWards';
-import AuthContext from './../context/auth-context.js'
+import React, { useContext } from "react";
+import Auth from "./../components/Auth";
+import MyWards from "./../components/MyWards";
+import BondsTable from "./../components/BondsTable";
+import AuthContext from "./../context/auth-context.js";
 
-const Guardian = () => {
-  const auth = useContext(AuthContext)
+import { Route, Redirect } from "react-router-dom";
+
+const Guardian = ({ match }) => {
+  const auth = useContext(AuthContext);
   return (
     <h1>
       Guardian Route
-      {!auth.token && <Auth/>}
-      {auth.token && <MyWards/>}
-      {auth.token && <button onClick={()=>auth.logout()} >signout</button>}
+      {!auth.token && <Auth />}
+      {auth.token && (
+        <>
+          <Redirect from={`${match.path}`} to={`${match.path}/mywards`} />
+          <Route path={`${match.path}/mywards`} component={MyWards} />
+        </>
+      )}
+      {auth.token && (
+        <Route path={`${match.path}/bondstable`} component={BondsTable} />
+      )}
+      {auth.token && <button onClick={() => auth.logout()}>signout</button>}
     </h1>
-)};
+  );
+};
 export default Guardian;
