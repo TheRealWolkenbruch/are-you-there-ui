@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import Auth from './../components/Auth';
+import MyWards from './../components/MyWards';
 import AuthContext from './../context/auth-context.js'
 
 const Guardian = () => {
@@ -8,6 +9,7 @@ const Guardian = () => {
     <h1>
       Guardian Route
       {!auth.token && <Auth/>}
+      {auth.token && <MyWards/>}
       {auth.token && <button onClick={()=>auth.logout()} >signout</button>}
     </h1>
 )};
