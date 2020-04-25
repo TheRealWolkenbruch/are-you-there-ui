@@ -14,7 +14,7 @@ const Auth = () => {
 
   return (
     <form>
-      <label for="email">
+      <label htmlFor="email">
         <b>Email</b>
       </label>
       <input
@@ -25,7 +25,7 @@ const Auth = () => {
         onChange={(event) => setEmail(event.target.value)}
         required
       />
-      <label for="psw">
+      <label htmlFor="psw">
         <b>Password</b>
       </label>
       <input
