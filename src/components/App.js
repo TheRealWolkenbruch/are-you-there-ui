@@ -33,9 +33,9 @@ const App = () => {
       </header>
       <main>
         <AuthContextProvider value={context}>
-          <Route exact path="/Guardian" component={Guardian}/>
+          <Route exact path="/guardian" component={Guardian}/>
         </AuthContextProvider>
-        <Route path="/Ward/:name" component={Ward}/>
+        <Route path="/ward/:name" component={Ward}/>
       </main>
       <footer>
         footer
