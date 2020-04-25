@@ -1,5 +1,6 @@
 :root {
   --primary-color: #002639;
+  --secondary-color: #ffd8be;
 }
 
 body {
@@ -18,14 +19,14 @@ code {
 
 li.ant-menu-item-selected > a,
 .ant-menu-item-selected > a:hover {
-  background: #ffd8be;
+  background: var(--secondary-color);
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
   li.ant-menu-item-selected {
   transition: all 0.1s;
   font-weight: bold;
-  background: #ffd8be;
+  background: var(--secondary-color);
   color: var(--primary-color);
 }
 
@@ -52,9 +53,6 @@ aside {
   overflow: initial;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 11px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .logo {
@@ -68,7 +66,7 @@ aside {
   flex-direction: row;
   justify-content: baseline;
   align-items: center;
-  background-color: #ffd8be;
+  background-color: var(--secondary-color);
   padding: 1em;
   width: 100%;
   max-height: 62px;
@@ -84,14 +82,34 @@ aside {
 .content_wrapper > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 .content_wrapper #basic {
   width: 100%;
   max-width: 600px;
+  margin: auto;
+  padding-top: 3vh;
 }
 
 .login-form-button {
   width: 100%;
+}
+.mywards__btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mywards__cards-wrapper .ant-col.ant-col-8 {
+  padding: 8px;
+}
+.mywards__cards-wrapper .ant-card .ant-card-head {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  font-weight: bold;
+}
+
+.mywards__cards-wrapper .ant-card .ant-card-body {
+  border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
 }

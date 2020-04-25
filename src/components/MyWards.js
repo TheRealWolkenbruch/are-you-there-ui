@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Row, Modal, Form, Input } from "antd";
+import { Card, Col, Row, Modal, Form, Input, Button } from "antd";
+import { PlusCircleOutlined } from "@ant-design/icons";
+
 import data from "./../context/dummyData";
 
 const MyWards = () => {
@@ -38,15 +40,17 @@ const MyWards = () => {
 
   return (
     <>
-      <div>
-        <button
+      <div className="mywards__btn-wrapper">
+        <Button
           type="primary"
           onClick={() => {
             setVisible(true);
           }}
         >
-          Open Modal
-        </button>
+          {" "}
+          <PlusCircleOutlined />
+          Add Ward
+        </Button>
         <Modal
           title="Basic Modal"
           visible={visible}
@@ -77,7 +81,7 @@ const MyWards = () => {
         </Modal>
       </div>
 
-      <div style={{ background: "#ECECEC", padding: "30px" }}>
+      <div className="mywards__cards-wrapper">
         <Row gutter={16}>
           {wardsList.map((ward) => {
             return (
