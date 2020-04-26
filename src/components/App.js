@@ -19,8 +19,10 @@ const { Header, Content, Sider } = Layout;
 
 const App = () => {
   let cookie_array = document.cookie.split(";");
-  let cookie = cookie_array.filter((e) => e.includes("token="));
-  cookie = cookie.pop().toString().replace("token=", "") || null;
+  let cookie = cookie_array.filter((e) => e.match(/^token=/) !== null).pop();
+  if (cookie) {
+    cookie = cookie.toString().replace("token=", "") || null;
+  }
   const [token, setToken] = useState(cookie);
   const [email, setEmail] = useState(null);
 
