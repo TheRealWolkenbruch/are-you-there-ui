@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Test deployment
 
+## Docker
+
+You _can_ run this project from a docker container by running:
+
+```bash
+docker build -t ayt-ui .
+docker run -p 3000:3000 ayt-ui
+# allow some time to compile your code
+curl localhost:3000
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
