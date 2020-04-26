@@ -8,17 +8,20 @@ const Auth = () => {
   const [password, setPassword] = useState("");
 
   const signin = async () => {
-    const result = await fetch("/login", {
-      credentials: "include", // It's okay to set cookie in client
-      method: "post",
-      body: JSON.stringify({
-        login: email,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const result = await fetch(
+      `${process.env.REACT_APP_BACKEND_API_URL}/login`,
+      {
+        credentials: "include", // It's okay to set cookie in client
+        method: "post",
+        body: JSON.stringify({
+          login: email,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const status = await result.status;
     const token = await result.headers.get("Authorization");
     if (status === 200 && token) {

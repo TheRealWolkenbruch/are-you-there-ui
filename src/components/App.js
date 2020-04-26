@@ -58,7 +58,6 @@ const App = () => {
         <Layout>
           <Header className="header">
             <div className="logo" />
-            psdojaäspdj
           </Header>
           <Layout
             className="site-layout-sub-header-background"
