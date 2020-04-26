@@ -146,3 +146,16 @@ aside {
   font-weight: 800;
   margin-bottom: 50px;
 }
+
+h1 {
+  font-size: 30px;
+}
+
+.ant-tabs.ant-tabs-top.ant-tabs-card.ant-tabs-no-animation {
+  max-width: 600px;
+  margin: auto;
+  width: 100%;
+}
+.ant-tabs.ant-tabs-top.ant-tabs-card.ant-tabs-no-animation h1 {
+  text-align: center;
+}
