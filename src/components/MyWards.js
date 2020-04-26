@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Card, Col, Row, Modal, Form, Input, Button } from "antd";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { PlusCircleOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import AuthContext from "./../context/auth-context.js";
 
@@ -36,6 +36,10 @@ const MyWards = () => {
     } else {
       alert("something went wrong");
     }
+  };
+
+  const deleteWard = async () => {
+    alert("delete");
   };
 
   useEffect(() => {
@@ -122,7 +126,13 @@ const MyWards = () => {
             return (
               <Col span={8} key={ward.key}>
                 <Card title={ward.human_readable_name} bordered={false}>
-                  {ward.email}
+                  <Button
+                    type="primary"
+                    icon={<DeleteOutlined />}
+                    onClick={deleteWard}
+                  >
+                    Delete
+                  </Button>
                 </Card>
               </Col>
             );
