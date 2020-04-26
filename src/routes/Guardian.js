@@ -1,14 +1,38 @@
-import React, {useContext} from 'react';
-import Auth from './../components/Auth';
-import AuthContext from './../context/auth-context.js'
+import React, { useContext } from "react";
+import Auth from "./../components/Auth";
+import MyWards from "./../components/MyWards";
+import BondsTable from "./../components/BondsTable";
+import AuthContext from "./../context/auth-context.js";
+import { Button } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 
-const Guardian = () => {
-  const auth = useContext(AuthContext)
+import { Route, Redirect } from "react-router-dom";
+
+const Guardian = ({ match }) => {
+  const auth = useContext(AuthContext);
   return (
-    <h1>
-      Guardian Route
-      {!auth.token && <Auth/>}
-      {auth.token && <button onClick={()=>auth.logout()} >signout</button>}
-    </h1>
-)};
+    <div>
+      {!auth.token && <Auth />}
+      {auth.token && (
+        <>
+          <Redirect exact from={`${match.path}`} to={`${match.path}/mywards`} />
+          <Route path={`${match.path}/mywards`} component={MyWards} />
+          <Route path={`${match.path}/bondstable`} component={BondsTable} />
+        </>
+      )}
+      {auth.token && (
+        <Button
+          type="primary"
+          icon={<HomeOutlined />}
+          size="large"
+          className="signout"
+          onClick={() => auth.logout()}
+          danger
+        >
+          signout
+        </Button>
+      )}
+    </div>
+  );
+};
 export default Guardian;

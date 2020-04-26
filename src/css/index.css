@@ -1,13 +1,122 @@
+:root {
+  --primary-color: #002639;
+  --secondary-color: #ffd8be;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+li.ant-menu-item-selected > a,
+.ant-menu-item-selected > a:hover {
+  background: var(--secondary-color);
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
+  li.ant-menu-item-selected {
+  transition: all 0.1s;
+  font-weight: bold;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.ant-menu-dark li.ant-menu-item-selected > a,
+.ant-menu-dark .ant-menu-item-selected > a:hover {
+  font-weight: bold;
+  transition: all 0.1s;
+  color: var(--primary-color);
+}
+
+li.ant-menu-item.ant-menu-item-only-child {
+  font-weight: bold;
+}
+aside {
+  background: var(--primary-color);
+}
+
+.content_wrapper {
+  background-color: white;
+  padding: 24;
+  height: 85vh;
+  padding: 100px;
+  margin: 40px 30px 40px 30px;
+  overflow: initial;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 11px;
+  position: relative;
+}
+
+.content_wrapper .signout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.logo {
+  font-size: 16px;
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+.logo_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 1em;
+  width: 100%;
+  max-height: 62px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.content_wrapper > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.content_wrapper #basic {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding-top: 3vh;
+}
+
+.login-form-button {
+  width: 100%;
+}
+.mywards__btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mywards__cards-wrapper .ant-col.ant-col-8 {
+  padding: 8px;
+}
+.mywards__cards-wrapper .ant-card .ant-card-head {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  font-weight: bold;
+}
+
+.mywards__cards-wrapper .ant-card .ant-card-body {
+  border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
 }
