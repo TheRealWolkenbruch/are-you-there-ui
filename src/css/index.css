@@ -120,3 +120,15 @@ aside {
   border: 1px solid var(--secondary-color);
   color: var(--primary-color);
 }
+
+.mywards__cards-wrapper .ant-card-body .ant-btn.ant-btn-primary {
+  border: none;
+  background: var(--primary-color);
+  opacity: 0.5;
+  font-weight: bold;
+  width: 100%;
+}
+
+.mywards__cards-wrapper .ant-card-body .ant-btn.ant-btn-primary:hover {
+  opacity: 1;
+}
