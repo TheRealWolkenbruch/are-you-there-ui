@@ -21,11 +21,12 @@ const App = () => {
   const [token, setToken] = useState(null);
   const [email, setEmail] = useState(null);
 
-  const login = (token, userid) => {
+  const login = (token, email) => {
     setToken(token);
-    setEmail(userid);
+    setEmail(email);
   };
   const logout = () => {
+    document.cookie = "token=; expires=Thu, 01-Jan-70 00:00:01 GMT;";
     setToken(null);
     setEmail(null);
   };

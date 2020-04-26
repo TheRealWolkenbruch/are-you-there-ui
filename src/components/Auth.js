@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "./../context/auth-context.js";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
@@ -8,10 +8,28 @@ const Auth = () => {
   const [password, setPassword] = useState("");
 
   const signin = async () => {
-    // POST API/SIGNUP
-    auth.login(email, password);
+    const result = await fetch("/login", {
+      credentials: "include", // It's okay to set cookie in client
+      method: "post",
+      body: JSON.stringify({
+        login: email,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const status = await result.status;
+    const token = await result.headers.get("Authorization");
+    if (status === 200 && token) {
+      document.cookie = `token=${token}`;
+      auth.login(token, email);
+    } else {
+      alert("something went wrong");
+      setEmail("");
+      setPassword("");
+    }
   };
-
   return (
     <Form name="basic" initialValues={{ remember: true }} onFinish={signin}>
       <Form.Item
