@@ -7,7 +7,8 @@ COPY package.json ./
 RUN yarn install
 
 COPY . ./
+ENV NODE_ENV=production
+RUN yarn build
 
-# start app
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["http-server", "./build", "-a", "0.0.0.0", "-p", "3000", "--no-dotfiles"]
