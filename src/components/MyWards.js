@@ -21,14 +21,17 @@ const MyWards = () => {
       email: email,
       password: password,
     };
-    let result = await fetch("/api/wards/create", {
-      method: "post",
-      body: JSON.stringify(json),
-      headers: {
-        Authorization: auth.token,
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      `${process.env.REACT_APP_BACKEND_API_URL}/api/wards/create`,
+      {
+        method: "post",
+        body: JSON.stringify(json),
+        headers: {
+          Authorization: auth.token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const status = await result.status;
     if (status === 200) {
       setQuery(json);
@@ -44,13 +47,16 @@ const MyWards = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const result = await fetch("/api/wards", {
-        method: "get",
-        headers: {
-          Authorization: auth.token,
-          "Content-Type": "application/json",
-        },
-      });
+      const result = await fetch(
+        `${process.env.REACT_APP_BACKEND_API_URL}/api/wards`,
+        {
+          method: "get",
+          headers: {
+            Authorization: auth.token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const body = await result.json();
       setWardsList(body);
     };
