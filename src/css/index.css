@@ -132,3 +132,17 @@ aside {
 .mywards__cards-wrapper .ant-card-body .ant-btn.ant-btn-primary:hover {
   opacity: 1;
 }
+
+.thank_you_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thank_you_wrapper h1 {
+  font-size: 45px;
+  padding-left: 10px;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
