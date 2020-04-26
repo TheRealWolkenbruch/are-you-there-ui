@@ -1,42 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Col, Row, Modal, Form, Input, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
-import data from "./../context/dummyData";
+import AuthContext from "./../context/auth-context.js";
 
 const MyWards = () => {
+  const auth = useContext(AuthContext);
+  const [query, setQuery] = useState("");
   const [wardsList, setWardsList] = useState([]);
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const addWard = () => {
-    // const result = await fetch("Add wards", POST);
-    // const listOfWard = await result.json();
-    // setWardsList(listOfWard);
-    var today = new Date();
-    var date = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+  const [password, setPassword] = useState("");
+  const [contact, setContact] = useState("");
 
-    const dummyData = {
-      key: "4",
-      name: name,
+  const addWard = async () => {
+    let json = {
+      human_readable_name: name,
+      contactdata: contact,
       email: email,
-      created_at: date,
-      status: ["pending"],
+      password: password,
     };
-    data.push(dummyData);
-    setVisible(false);
-    setWardsList(data);
+    let result = await fetch("/api/wards/create", {
+      method: "post",
+      body: JSON.stringify(json),
+      headers: {
+        Authorization: auth.token,
+        "Content-Type": "application/json",
+      },
+    });
+    const status = await result.status;
+    if (status === 200) {
+      setQuery(json);
+      setVisible(false);
+    } else {
+      alert("something went wrong");
+    }
   };
-  // useEffect is a hook for encapsulating code that has 'side effects,' and is
-  // like a combination of componentDidMount , componentDidUpdate
+
   useEffect(() => {
-    // const fetchData = async () => {
-    //   // const result = await fetch("");
-    //   // const body = await result.json();
-    //   setWardsList(data);
-    // };
-    setWardsList(data);
-  }, [wardsList]);
+    const fetchdata = async () => {
+      const result = await fetch("/api/wards", {
+        method: "get",
+        headers: {
+          Authorization: auth.token,
+          "Content-Type": "application/json",
+        },
+      });
+      const body = await result.json();
+      setWardsList(body);
+    };
+    fetchdata();
+  }, [query, auth.token]);
 
   return (
     <>
@@ -77,6 +92,26 @@ const MyWards = () => {
             >
               <Input onChange={(e) => setEmail(e.target.value)} />
             </Form.Item>
+
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <Input onChange={(e) => setPassword(e.target.value)} />
+            </Form.Item>
+
+            <Form.Item
+              label="Contact Data"
+              name="contact"
+              rules={[
+                { required: true, message: "Please input your contact data!" },
+              ]}
+            >
+              <Input onChange={(e) => setContact(e.target.value)} />
+            </Form.Item>
           </Form>
         </Modal>
       </div>
@@ -86,8 +121,8 @@ const MyWards = () => {
           {wardsList.map((ward) => {
             return (
               <Col span={8} key={ward.key}>
-                <Card title={ward.email} bordered={false}>
-                  {ward.status}
+                <Card title={ward.human_readable_name} bordered={false}>
+                  {ward.email}
                 </Card>
               </Col>
             );
